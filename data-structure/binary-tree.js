@@ -22,7 +22,7 @@ const BFT = function (node) {
     queue.push(node);
 
     while (queue.length > 0) {
-        nextNode = queue.shift();
+        const nextNode = queue.shift();
         if (nextNode) {
             console.log(nextNode.data);
             queue.push(nextNode.left);
@@ -96,12 +96,22 @@ n3.setRight(n9);
 
 n8.setLeft(n5);
 
-// preOrderTraversal(rootNode);
+console.log('---------preOrderTraversal------------');
+preOrderTraversal(rootNode);
 
-console.log(sumTree(n3))
+console.log('---------inOrderTraversal------------');
+inOrderTraversal(rootNode);
 
-// BFT(rootNode);
-// console.log(rootNode.left.left.data);
+console.log('---------postOrderTraversal------------');
+postOrderTraversal(rootNode);
+
+console.log('---------BFT------------');
+BFT(rootNode);
+console.log('--------------');
+
+console.log('sumTree', sumTree(n3))
+
+console.log(rootNode.left.left.data);
 
 
 

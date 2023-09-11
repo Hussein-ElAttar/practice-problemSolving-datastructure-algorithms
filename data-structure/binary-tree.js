@@ -42,16 +42,16 @@ const preOrderTraversal = function (node) {
 const inOrderTraversal = function (node) {
     if (!node) { return; }
 
-    preOrderTraversal(node.left);
+    inOrderTraversal(node.left);
     console.log(node.data);
-    preOrderTraversal(node.right);
+    inOrderTraversal(node.right);
 }
 
 const postOrderTraversal = function (node) {
     if (!node) { return; }
 
-    preOrderTraversal(node.left);
-    preOrderTraversal(node.right);
+    postOrderTraversal(node.left);
+    postOrderTraversal(node.right);
     console.log(node.data);
 }
 

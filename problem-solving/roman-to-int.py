@@ -1,21 +1,19 @@
 def romanToInt(s):
     mappings = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
+    total = 0
+    prev_value = 0  # Initialize the previous value
 
-    total = i = 0
-    while i < len(s):
-        char = s[i]
+    for char in reversed(s):
+        value = mappings[char]
 
-        if i == len(s) - 1:
-            total += mappings[char]
-            i += 1
-        elif mappings[s[i + 1]] <= mappings[char]:  # Fix the comparison
-            total += mappings[char]
-            i += 1
+        if value < prev_value:
+            total -= value
         else:
-            total += mappings[s[i + 1]] - mappings[char]
-            i += 2 
+            total += value
+
+        prev_value = value  # Update the previous value
 
     return total
 
 
-print(romanToInt("VVI"))
+print(romanToInt("VVIV"))

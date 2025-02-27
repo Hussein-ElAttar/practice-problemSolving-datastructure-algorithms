@@ -23,6 +23,14 @@ kubectl config use-context xXXXx
     kubectl get rs -o wide
     kubectl -n prod get pods -l LABEL=VALUE --tail=-1 | grep "KEY_WORD"
 
+    # Get Pods logs that are not "VALUE2" or "VALUE3"
+    kubectl -n testing logs -l "LABEL1=VALUE1,LABEL2 notin (VALUE2,VALUE3)" --tail=100 -f
+
+    kubectl -n testing get pods -l LABEL=VALUE -o custom-columns=":metadata.name" --no-headers
+    | grep -Ev "VALUE2|VALUE3" | xargs -I{} kubectl -n testing logs {} --tail=100 -f
+
+
+
 # Delete pod/replica-sets
     kubectl delete pod POD-NAME
     kubectl delete rs REPLICASET-NAME
